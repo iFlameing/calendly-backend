@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 mongoose.connect(
-  "mongodb+srv://iFlameing:Alok9988@calendly-fpgpl.mongodb.net/test?retryWrites=true&w=majority",
+  "mongodb+srv://your username and password@calendly-fpgpl.mongodb.net/test?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
