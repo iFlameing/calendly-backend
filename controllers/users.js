@@ -85,8 +85,8 @@ module.exports = {
       port: 587,
       secure: false,
       auth: {
-        user: "funapp1076@gmail.com",
-        pass: "Alok@9988",
+        user: "your username",
+        pass: "your password",
       },
     });
     transporter.sendMail(
