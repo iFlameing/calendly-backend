@@ -15,27 +15,29 @@ module.exports = {
       googleid: googleId,
       email: email,
       imageUrl: imageUrl,
-      givenName: givenName
+      givenName: givenName,
     };
+    console.log("thi si user", user);
 
     const newUser = await User.create(user);
+    console.log(newUser);
     const min15Event = {
       title: "15 Min Meeting",
       link: `${googleId}/15min`,
       type: "one-to-one",
-      duration: "15min"
+      duration: "15min",
     };
     const min30Event = {
       title: "30 Min Meeting",
       link: `${googleId}/30min`,
       type: "one-to-one",
-      duration: "30min"
+      duration: "30min",
     };
     const min60Event = {
       title: "60 Min Meeting",
       link: `${googleId}/60min`,
       type: "one-to-one",
-      duration: "60min"
+      duration: "60min",
     };
     const min15 = await Event.create(min15Event);
     const min30 = await Event.create(min30Event);
@@ -50,9 +52,9 @@ module.exports = {
     console.log(req.params.id);
     User.findOne({ googleid: req.params.id })
       .populate("events")
-      .exec(function(err, foundUser) {
+      .exec(function (err, foundUser) {
         if (err) {
-          console.log(err);
+          res.json(err);
         } else {
           return res.status(200).json(foundUser);
         }
@@ -61,9 +63,9 @@ module.exports = {
   getScheduleForUser: async (req, res, next) => {
     User.findOne({ googleid: req.params.id })
       .populate("schedules")
-      .exec(function(err, foundUser) {
+      .exec(function (err, foundUser) {
         if (err) {
-          console.log(err);
+          res.json(err);
         } else {
           return res.status(200).json(foundUser);
         }
@@ -84,8 +86,8 @@ module.exports = {
       secure: false,
       auth: {
         user: "funapp1076@gmail.com",
-        pass: "Alok@9988"
-      }
+        pass: "Alok@9988",
+      },
     });
     transporter.sendMail(
       {
@@ -93,11 +95,11 @@ module.exports = {
         to: email,
         subject: `New Metting with ${foundUser.givenName}`,
         text: "Hello world ?",
-        html: `<p>Hello, A New meeting is setup with${foundUser.givenName} on ${date} </p>`
+        html: `<p>Hello, A New meeting is setup with${foundUser.givenName} on ${date} </p>`,
       },
-      function(err, info) {
+      function (err, info) {
         if (err) {
-          console.log(err);
+          res.json(err);
         } else {
           console.log(info);
           console.log("Email sent successfully");
@@ -110,11 +112,11 @@ module.exports = {
         to: foundUser.email,
         subject: `New Metting with ${name}`,
         text: "Hello world ?",
-        html: `<p>Hello, A New meeting is setup with${name} on ${date} </p>`
+        html: `<p>Hello, A New meeting is setup with${name} on ${date} </p>`,
       },
-      function(err, info) {
+      function (err, info) {
         if (err) {
-          console.log(err);
+          res.json(err);
         } else {
           console.log(info);
           console.log("Email sent successfully");
@@ -130,11 +132,11 @@ module.exports = {
       title: title,
       link: `${foundUser.googleid}/${link}`,
       type: "one-to-one",
-      duration: duration
+      duration: duration,
     };
     const newevent = await Event.create(newEvent);
     foundUser.events.push(newevent);
     foundUser.save();
     res.status(200).json({ Success: true });
-  }
+  },
 };

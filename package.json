@@ -1,46 +1,20 @@
 {
   "name": "candlyclone123",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is just a clone for Candely",
   "main": "index.js",
   "scripts": {
-    "server-dev": "cross-env NODE_ENV=prod nodemon server/index.js",
-    "client-dev": "npm start --prefix client",
-    "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
-    "test": "cross-env NODE_ENV=test mocha --timeout 5000 __tests__/server/**/*.test.js",
-    "report": "cross-env NODE_ENV=test nyc --reporter=lcov mocha --timeout 5000 __tests__/server/**/*.test.js",
-    "text-report": "cross-env NODE_ENV=test nyc --reporter=text-summary mocha --timeout 5000 __tests__/server/**/*.test.js",
-    "nyc": "cross-env NODE_ENV=test nyc mocha --timeout 5000 __tests__/server/**/*.test.js"
+    "start": "node index.js"
   },
-  "author": "CodeWorkr",
+  "author": "iFlameing",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^4.9.8",
-    "@material-ui/icons": "^4.9.1",
-    "axios": "^0.19.2",
-    "bcryptjs": "^2.4.3",
-    "concurrently": "^5.1.0",
-    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "express-promise-router": "^3.0.3",
-    "googleapis": "^48.0.0",
-    "joi": "^14.3.1",
-    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.7",
-    "morgan": "^1.10.0",
-    "nodemailer": "^6.4.6",
-    "passport": "^0.4.1",
-    "passport-google-id-token": "^0.4.7",
-    "passport-google-plus-token": "^2.1.0",
-    "passport-google-token": "^0.1.2",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
-    "react-hot-loader": "^4.12.20",
-    "react-router-dom": "^5.1.2",
-    "recompose": "^0.30.0",
-    "styled-components": "^5.0.1"
+    "nodemailer": "^6.4.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
